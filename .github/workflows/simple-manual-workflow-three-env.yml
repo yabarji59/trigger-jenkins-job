@@ -1,0 +1,44 @@
+name: Simple Manual Workflow - Three Env
+
+on:
+  push:
+    branches: [main]
+
+  workflow_dispatch:
+
+jobs:
+
+  DEV:
+    runs-on: ubuntu-latest
+    environment: DEV
+
+    steps:
+        - uses: actions/checkout@v2
+
+        - name: First script from DEV
+          run: |
+            echo "I am running a job in tehe DEV environment"
+
+  QA:
+    runs-on: ubuntu-latest
+    environment: DEV
+    needs: DEV
+
+    steps:
+        - uses: actions/checkout@v2
+
+        - name: First script from QA
+          run: |
+            echo "I am running a job in tehe QA environment"
+
+  PROD:
+    runs-on: ubuntu-latest
+    environment: PROD
+    needs: QA
+
+    steps:
+        - uses: actions/checkout@v2
+
+        - name: First script from PROD
+          run: |
+            echo "I am running a job in tehe PROD environment"
