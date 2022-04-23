@@ -17,11 +17,11 @@ jobs:
 
         - name: First script from DEV
           run: |
-            echo "I am running a job in tehe DEV environment"
+            echo "I am running a job in the DEV environment"
 
   QA:
     runs-on: ubuntu-latest
-    environment: DEV
+    environment: QA
     needs: DEV
 
     steps:
@@ -29,7 +29,7 @@ jobs:
 
         - name: First script from QA
           run: |
-            echo "I am running a job in tehe QA environment"
+            echo "I am running a job in the QA environment"
 
   PROD:
     runs-on: ubuntu-latest
@@ -41,4 +41,4 @@ jobs:
 
         - name: First script from PROD
           run: |
-            echo "I am running a job in tehe PROD environment"
+            echo "I am running a job in the PROD environment"
